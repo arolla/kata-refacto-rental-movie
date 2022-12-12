@@ -16,7 +16,7 @@ namespace MovieRental.Tests
             Customer result = new Customer(name);
             foreach (Rental rental in rentals)
             {
-                result.addRental(rental);
+                result.AddRental(rental);
             }
             return result;
         }
