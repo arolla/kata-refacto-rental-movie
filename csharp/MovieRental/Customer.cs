@@ -26,14 +26,7 @@ namespace MovieRental
             foreach (var rental in _rentals)
             {
                 var thisAmount = CalculateMovieRentalAmount(rental);
-
-                // add frequent renter points
-                frequentRenterPoints++;
-                // add bonus for a two day new release rental
-                if (rental.GetMovie().GetPriceCode() == Movie.NEW_RELEASE && rental.GetDaysRented() > 1)
-                {
-                    frequentRenterPoints++;
-                }
+                frequentRenterPoints = ComputeFrequentRenterPoints(frequentRenterPoints, rental);
                 // show figures for this rental
                 result += "\t" + rental.GetMovie().GetTitle() + "\t" + thisAmount + "\n";
                 totalAmount += thisAmount;
@@ -42,6 +35,19 @@ namespace MovieRental
             result += "Amount owed is " + totalAmount + "\n";
             result += "You earned " + frequentRenterPoints + " frequent renter points";
             return result;
+        }
+
+        private static int ComputeFrequentRenterPoints(int frequentRenterPoints, Rental rental)
+        {
+            // add frequent renter points
+            frequentRenterPoints++;
+            // add bonus for a two day new release rental
+            if (rental.GetMovie().GetPriceCode() == Movie.NEW_RELEASE && rental.GetDaysRented() > 1)
+            {
+                frequentRenterPoints++;
+            }
+
+            return frequentRenterPoints;
         }
 
         /// <summary>
@@ -61,7 +67,7 @@ namespace MovieRental
 
                 case Movie.CHILDRENS:
                     return CalculateChildrenMoviePrice(rental);
-
+                    
                 default:
                     // TODO: check with PO if this case is correct or if we should throw.
                     return 0;
