@@ -55,17 +55,29 @@ namespace MovieRental
                     return CalculateRegularMoviePrice(rental);
 
                 case Movie.NEW_RELEASE:
-                    thisAmount += rental.getDaysRented() * 3;
-                    break;
+                    return CalculateNewReleaseMoviePrice(rental);
+
                 case Movie.CHILDRENS:
-                    thisAmount += 1.5;
-                    if (rental.getDaysRented() > 3)
-                    {
-                        thisAmount += (rental.getDaysRented() - 3) * 1.5;
-                    }
-                    break;
+                    return CalculateChildrenMoviePrice(rental);
             }
+
             return thisAmount;
+        }
+
+        private static double CalculateChildrenMoviePrice(Rental rental)
+        {
+            double thisAmount = 1.5;
+            if (rental.getDaysRented() > 3)
+            {
+                thisAmount += (rental.getDaysRented() - 3) * 1.5;
+            }
+
+            return thisAmount;
+        }
+
+        private static double CalculateNewReleaseMoviePrice(Rental rental)
+        {
+            return rental.getDaysRented() * 3;
         }
 
         private static double CalculateRegularMoviePrice(Rental rental)
