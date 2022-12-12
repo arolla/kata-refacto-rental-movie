@@ -17,16 +17,16 @@ namespace MovieRental
             _priceCode = priceCode;
         }
 
-        public int getPriceCode()
+        public int GetPriceCode()
         {
             return _priceCode;
         }
 
-        public void setPriceCode(int arg)
+        public void SetPriceCode(int arg)
         {
             _priceCode = arg;
         }
-        public String getTitle()
+        public String GetTitle()
         {
             return _title;
         }
