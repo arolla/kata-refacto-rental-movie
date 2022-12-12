@@ -38,8 +38,8 @@ namespace MovieRental.Tests
                             .withRentals(rental1)
                             .build();
             string expected = "Rental Record for Sallie\n" +
-                    "\tGone with the Wind\t3,5\n" +
-                    "Amount owed is 3,5\n" +
+                    "\tGone with the Wind\t3.5\n" +
+                    "Amount owed is 3.5\n" +
                     "You earned 1 frequent renter points";
             string statement = customer2.statement();
             Assert.AreEqual(expected, statement);
@@ -74,8 +74,8 @@ namespace MovieRental.Tests
                     .withRentals(rental1)
                     .build();
             string expected = "Rental Record for Sallie\n" +
-                    "\tMadagascar\t1,5\n" +
-                    "Amount owed is 1,5\n" +
+                    "\tMadagascar\t1.5\n" +
+                    "Amount owed is 1.5\n" +
                     "You earned 1 frequent renter points";
             string statement = customer2.statement();
             Assert.AreEqual(expected, statement);
