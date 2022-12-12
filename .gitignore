@@ -2,9 +2,3 @@
 **/*.iml
 **/*.eclipse
 **/.idea
-/csharp/MovieRental.Tests/bin/
-/csharp/MovieRental.Tests/obj/
-/csharp/MovieRental/.vs/
-/csharp/MovieRental/bin/
-/csharp/MovieRental/obj/
-/csharp/MovieRental/packages/
