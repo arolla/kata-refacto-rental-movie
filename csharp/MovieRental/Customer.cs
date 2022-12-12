@@ -28,12 +28,18 @@ namespace MovieRental
                 var thisAmount = CalculateMovieRentalAmount(rental);
                 frequentRenterPoints = ComputeFrequentRenterPoints(frequentRenterPoints, rental);
                 // show figures for this rental
-                result += "\t" + rental.GetMovie().GetTitle() + "\t" + thisAmount + "\n";
+                result = AppendRentalFigure(result, rental, thisAmount);
                 totalAmount += thisAmount;
             }
             // add footer lines
             result += "Amount owed is " + totalAmount + "\n";
             result += "You earned " + frequentRenterPoints + " frequent renter points";
+            return result;
+        }
+
+        private static string AppendRentalFigure(string result, Rental rental, double thisAmount)
+        {
+            result += "\t" + rental.GetMovie().GetTitle() + "\t" + thisAmount + "\n";
             return result;
         }
 
