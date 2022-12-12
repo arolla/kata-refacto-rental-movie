@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 
 namespace MovieRental
 {
@@ -58,13 +59,13 @@ namespace MovieRental
                     frequentRenterPoints++;
 
                 // show figures for this rental
-                result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount.ToString() + "\n";
+                result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount.ToString(CultureInfo.InvariantCulture) + "\n";
                 totalAmount += thisAmount;
             }
 
             // add footer lines
-            result += "Amount owed is " + totalAmount.ToString() + "\n";
-            result += "You earned " + frequentRenterPoints.ToString() + " frequent renter points";
+            result += "Amount owed is " + totalAmount.ToString(CultureInfo.InvariantCulture) + "\n";
+            result += "You earned " + frequentRenterPoints.ToString(CultureInfo.InvariantCulture) + " frequent renter points";
 
             return result;
         }
