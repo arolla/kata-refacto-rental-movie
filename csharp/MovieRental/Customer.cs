@@ -52,12 +52,8 @@ namespace MovieRental
             switch (rental.getMovie().getPriceCode())
             {
                 case Movie.REGULAR:
-                    thisAmount += 2;
-                    if (rental.getDaysRented() > 2)
-                    {
-                        thisAmount += (rental.getDaysRented() - 2) * 1.5;
-                    }
-                    break;
+                    return CalculateRegularMoviePrice(rental);
+
                 case Movie.NEW_RELEASE:
                     thisAmount += rental.getDaysRented() * 3;
                     break;
@@ -69,6 +65,17 @@ namespace MovieRental
                     }
                     break;
             }
+            return thisAmount;
+        }
+
+        private static double CalculateRegularMoviePrice(Rental rental)
+        {
+            double thisAmount = 2;
+            if (rental.getDaysRented() > 2)
+            {
+                thisAmount += (rental.getDaysRented() - 2) * 1.5;
+            }
+
             return thisAmount;
         }
     }
