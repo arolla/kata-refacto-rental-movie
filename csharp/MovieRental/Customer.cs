@@ -25,8 +25,8 @@ namespace MovieRental
             var result = "Rental Record for " + GetName() + "\n";
             foreach (var rental in _rentals)
             {
-                double thisAmount = 0;
-                thisAmount = CalculateMovieRentalAmount(rental, thisAmount);
+                var thisAmount = CalculateMovieRentalAmount(rental);
+
                 // add frequent renter points
                 frequentRenterPoints++;
                 // add bonus for a two day new release rental
@@ -43,8 +43,11 @@ namespace MovieRental
             result += "You earned " + frequentRenterPoints + " frequent renter points";
             return result;
         }
-        private static double CalculateMovieRentalAmount(Rental rental, double thisAmount)
+
+        private static double CalculateMovieRentalAmount(Rental rental)
         {
+            double thisAmount = 0;
+
             //determine amounts for each line
             switch (rental.getMovie().getPriceCode())
             {
