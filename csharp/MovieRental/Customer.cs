@@ -30,12 +30,12 @@ namespace MovieRental
                 // add frequent renter points
                 frequentRenterPoints++;
                 // add bonus for a two day new release rental
-                if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE && rental.getDaysRented() > 1)
+                if (rental.GetMovie().GetPriceCode() == Movie.NEW_RELEASE && rental.GetDaysRented() > 1)
                 {
                     frequentRenterPoints++;
                 }
                 // show figures for this rental
-                result += "\t" + rental.getMovie().getTitle() + "\t" + thisAmount + "\n";
+                result += "\t" + rental.GetMovie().GetTitle() + "\t" + thisAmount + "\n";
                 totalAmount += thisAmount;
             }
             // add footer lines
@@ -44,12 +44,14 @@ namespace MovieRental
             return result;
         }
 
+        /// <summary>
+        /// Determines movie rental amount from its price code
+        /// </summary>
+        /// <param name="rental"></param>
+        /// <returns></returns>
         private static double CalculateMovieRentalAmount(Rental rental)
         {
-            double thisAmount = 0;
-
-            //determine amounts for each line
-            switch (rental.getMovie().getPriceCode())
+            switch (rental.GetMovie().GetPriceCode())
             {
                 case Movie.REGULAR:
                     return CalculateRegularMoviePrice(rental);
@@ -59,17 +61,19 @@ namespace MovieRental
 
                 case Movie.CHILDRENS:
                     return CalculateChildrenMoviePrice(rental);
-            }
 
-            return thisAmount;
+                default:
+                    // TODO: check with PO if this case is correct or if we should throw.
+                    return 0;
+            }
         }
 
         private static double CalculateChildrenMoviePrice(Rental rental)
         {
             double thisAmount = 1.5;
-            if (rental.getDaysRented() > 3)
+            if (rental.GetDaysRented() > 3)
             {
-                thisAmount += (rental.getDaysRented() - 3) * 1.5;
+                thisAmount += (rental.GetDaysRented() - 3) * 1.5;
             }
 
             return thisAmount;
@@ -77,15 +81,15 @@ namespace MovieRental
 
         private static double CalculateNewReleaseMoviePrice(Rental rental)
         {
-            return rental.getDaysRented() * 3;
+            return rental.GetDaysRented() * 3;
         }
 
         private static double CalculateRegularMoviePrice(Rental rental)
         {
             double thisAmount = 2;
-            if (rental.getDaysRented() > 2)
+            if (rental.GetDaysRented() > 2)
             {
-                thisAmount += (rental.getDaysRented() - 2) * 1.5;
+                thisAmount += (rental.GetDaysRented() - 2) * 1.5;
             }
 
             return thisAmount;

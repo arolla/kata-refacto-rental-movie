@@ -17,7 +17,7 @@ namespace MovieRental
             _priceCode = priceCode;
         }
 
-        public int getPriceCode()
+        public int GetPriceCode()
         {
             return _priceCode;
         }
@@ -26,7 +26,7 @@ namespace MovieRental
         {
             _priceCode = arg;
         }
-        public String getTitle()
+        public String GetTitle()
         {
             return _title;
         }

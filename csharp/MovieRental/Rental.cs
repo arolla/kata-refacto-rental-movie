@@ -11,12 +11,12 @@
             _daysRented = daysRented;
         }
 
-        public int getDaysRented()
+        public int GetDaysRented()
         {
             return _daysRented;
         }
 
-        public Movie getMovie()
+        public Movie GetMovie()
         {
             return _movie;
         }
